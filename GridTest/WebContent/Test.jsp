@@ -61,8 +61,12 @@ body {
 	height: 360px;
 }
 </style>
+<!-- 외부경로 적용 -->
 <script
-	src="./masonry.pkgd.min.js"></script>
+	src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+<!-- 내부경로 적용 -->
+<!-- <script
+	src="./masonry.pkgd.min.js"></script> -->
 </head>
 <body>
 
