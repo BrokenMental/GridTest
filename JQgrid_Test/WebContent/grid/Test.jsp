@@ -21,12 +21,13 @@
 		$("#list").jqGrid({
 			datatype: "local",
 			height: 250,
-			colNames:['이름','값'],
+			colNames:['신문사','통계'],
 			colModel:[
-				{name:'name',index:'name'},
-				{name:'value',index:'value'},
+				{name:'name',index:'name', width:200, align:"center", sorttype:"string"},
+				{name:'total',index:'total', width:200, align:"center", sorttype:"string"},
 				],
-				caption: "그리드 배열 데이터 샘플링",
+				caption: "뉴스 통계",
+				// multiselect : true, //체크박스 생성
 		        viewrecords: true,
 		        gridview: true,
 				pager: "#jqPager"
