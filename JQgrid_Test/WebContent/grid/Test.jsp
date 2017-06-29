@@ -30,7 +30,7 @@
 				// multiselect : true, //체크박스 생성
 		        viewrecords: true,
 		        gridview: true,
-				pager: "#jqPager"
+				// pager: "#jqPager" // 페이지 정보 표시
 			});
 	    var mydata = eval('<%=js%>');
 	    for(var j=0;j<=mydata.length;j++){
