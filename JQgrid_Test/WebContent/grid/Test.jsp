@@ -46,57 +46,61 @@
 </body>
 </html>
 
-<!-- <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<title>My First Grid</title>
- 
-<link rel="stylesheet" type="text/css" media="screen" href="css/ui.jqgrid.css" />
- 
-<style type="text/css">
-html, body {
-    margin: 0;
-    padding: 0;
-    font-size: 75%;
-}
-</style>
- 
-<script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
-<script src="js/i18n/grid.locale-en.js" type="text/javascript"></script>
-<script src="js/jquery.jqGrid.min.js" type="text/javascript"></script>
- 
+
+<!--
+// jqgrid 다운로드 
+// http://www.trirand.com/blog/?page_id=6
+
+// jquery ui 다운로드
+// https://jqueryui.com/download/
+
+// jquery 다운로드
+// https://jquery.com/download/
+
+<link rel="stylesheet" type="text/css" href="ui.jqgrid.css" />
+<link rel="stylesheet" type="text/css" href="jquery-ui.css" />
+//<link rel="stylesheet" type="text/css" href="jqGrid/css/addons/ui.multiselect.css" />
+	
+<section class="content">
+<script type="text/javascript" src="jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="jquery-ui-1.10.3.min.js"></script>
+<script type="text/javascript" src="locale_kr.js"></script>
+<script type="text/javascript" src="jquery.jqGrid.min.js"></script>
+<table id="jqGrid"></table>
+<div id="jqGridPager"></div>
 <script type="text/javascript">
-$(function () {
-    $("#list").jqGrid({
-        url: "example.json",
-        datatype: "json",
-        mtype: "POST",
-        colNames: ["Inv No", "Date", "Amount", "Tax", "Total", "Notes"],
-        colModel: [
-            { name: "invid", width: 55 },
-            { name: "invdate", width: 90 },
-            { name: "amount", width: 80, align: "right" },
-            { name: "tax", width: 80, align: "right" },
-            { name: "total", width: 80, align: "right" },
-            { name: "note", width: 150, sortable: false }
-        ],
-        pager: "#pager",
-        rowNum: 10,
-        rowList: [10, 20, 30],
-        sortname: "invid",
-        sortorder: "desc",
-        viewrecords: true,
-        gridview: true,
-        autoencode: true,
-        caption: "My first grid"
-    }); 
-}); 
+	$(function(){
+	    $.ajax({
+	        type: "GET",
+	        url: "공공데이터 api json url",
+	        success:function(data){
+	        	let test = data.octastatapi10619.row;
+
+                $("#jqGrid").jqGrid({
+                	datatype: "json", // 이건 왜쓰는건지 모르겠음, local 이나 json을 써도 변화가 없음
+                    colNames: ["기간", "구간", "계", "자치구", "지역"], // 필드에 표시할 제목
+                    colModel: [ // json 데이터 연동될 필드명 'name'에 입력, label은 모르겠음
+                        { name: 'GIGAN', width: 75 },
+                        { name: 'GUGAN', width: 150 },
+                        { name: 'GYE', width: 150 },
+                        { name: 'JACHIGU', width: 150 },
+                        { name: 'JIGEOP', width: 150 }
+                    ],
+                    viewrecords: true, // 우측 하단에 '보기'?
+                    height: 250, // 크기
+                    pager: "#jqGridPager", // pager 사용시 추가할 태그
+                });
+
+		        for(var i=0;i<test.length;i++){ // 외부 json을 grid에 집어넣으려면 for문으로 돌려야 하는듯?
+                    jQuery("#jqGrid").addRowData(i+1,test[i]);
+                    //jQuery().jqgrid() 라는 형식은 왜쓰는지 모르겠음
+                }
+		    }
+        })
+        
+    })
+    
+    // 참조 : https://www.google.co.kr/search?hl=ko&sxsrf=ACYBGNS27svXPBIMFFz5kYqq2bwWvyN6cQ%3A1571649283015&ei=A3etXbw50vrBA7uWquAC&q=jqgrid+json+%EB%8D%B0%EC%9D%B4%ED%84%B0+%EB%84%A3%EA%B8%B0&oq=jqgrid+json+%EB%8D%B0%EC%9D%B4%ED%84%B0+%EB%84%A3%EA%B8%B0&gs_l=psy-ab.3..0.1088.6734..6824...8.0..2.124.2456.19j6......0....1..gws-wiz.......0i20i263j35i39j0i30j33i160.YL9JFbd2CDk&ved=0ahUKEwj8xubpga3lAhVSfXAKHTuLCiwQ4dUDCAs&uact=5
 </script>
- 
-</head>
-<body>
-    <table id="list"><tr><td></td></tr></table> 
-    <div id="pager"></div> 
-</body>
-</html> -->
+</section>
+ -->
