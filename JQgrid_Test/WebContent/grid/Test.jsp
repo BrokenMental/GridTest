@@ -21,18 +21,22 @@
 		$("#list").jqGrid({
 			datatype: "local",
 			height: 250,
-			colNames:['신문사','통계'],
-			colModel:[
+			colNames:['신문사','통계'], //화면에 표시되는 컬럼제목
+			colModel:[ //데이터와 매핑되는 명칭(name), 대소문자를 가지니 주의하자
 				{name:'name',index:'name', width:200, align:"center", sorttype:"string"},
 				{name:'total',index:'total', width:200, align:"center", sorttype:"string"},
 				],
-				caption: "뉴스 통계",
+				caption: "뉴스 통계", //그리드 제목
 				// multiselect : true, //체크박스 생성
 		        viewrecords: true,
-		        gridview: true,
+				gridview: true,
+				// data: temp? // json 형식의 데이터 매핑 할 경우 사용
 				// pager: "#jqPager" // 페이지 정보 표시
 			});
-	    var mydata = eval('<%=js%>');
+		
+		var mydata = eval('<%=js%>');
+		
+		//여러 데이터 집어넣을경우(반복문 사용)
 	    for(var j=0;j<=mydata.length;j++){
 	        jQuery("#list").addRowData(j+1,mydata[j]);
 	    }
